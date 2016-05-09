@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+ l4d2-php-fpm:
+   image: php:5-fpm-alpine
+   links:
+     - l4d2-database
+   volumes:
+     - ./WEBSTATS:/var/www/html:ro
+
+ l4d2-nginx-front:
+   image: nginx:alpine
+   links:
+     - l4d2-php-fpm
+   ports:
+     - "9012:80"
+   volumes:
+     - ./nginx/l4d2.conf:/etc/nginx/conf.d/default.conf:ro
+     - ./WEBSTATS:/usr/share/nginx/html:ro
+
+ l4d2-database:
+   image: mariadb:5
+   volumes:
+     - ./mariadb:/var/lib/mysql
+   environment:
+     - MYSQL_DATABASE=l4d2stats
+     - MYSQL_USER=l4d2user
+     - MYSQL_PASSWORD=password
+     - MYSQL_ROOT_PASSWORD=rootpwd
