@@ -2,7 +2,8 @@ version: '2'
 
 services:
  l4d2-php-fpm:
-   image: php:5-fpm-alpine
+   image: fculpo/phpfpmsql:latest
+   #image: phpfpm:sql
    links:
      - l4d2-database
    volumes:
