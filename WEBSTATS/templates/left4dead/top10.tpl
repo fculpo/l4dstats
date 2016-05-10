@@ -1,4 +1,4 @@
-﻿
+
 			<li>
 				<h2><span class="flicker"><?php echo $language_pack['top10players']; ?></span></h2>
 				<ul>

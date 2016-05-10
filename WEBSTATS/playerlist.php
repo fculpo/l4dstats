@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 ================================================
 LEFT 4 DEAD AND LEFT 4 DEAD 2 PLAYER RANK

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /*=================================#
 # THIS IS THE BASE LANGUAGE FILE   #

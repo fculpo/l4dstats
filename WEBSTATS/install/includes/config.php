@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('UTC');
+
 $config = array(
 	'title' => 'Custom Player Stats Installation',
 	'description' => 'This wizard will guide you to install database tables and the web site for Left 4 Dead Custom Player Stats.',
