@@ -7,7 +7,7 @@ services:
    links:
      - l4d2-database
    volumes:
-     - ./WEBSTATS:/var/www/html:ro
+     - ./WEBSTATS:/var/www/html
 
  l4d2-nginx-front:
    image: nginx:alpine
@@ -17,7 +17,7 @@ services:
      - "9012:80"
    volumes:
      - ./nginx/l4d2.conf:/etc/nginx/conf.d/default.conf:ro
-     - ./WEBSTATS:/usr/share/nginx/html:ro
+     - ./WEBSTATS:/usr/share/nginx/html
 
  l4d2-database:
    image: mariadb:5
