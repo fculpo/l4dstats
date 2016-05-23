@@ -2,8 +2,7 @@ version: '2'
 
 services:
  l4d2-php-fpm:
-   image: fculpo/phpfpmsql:latest
-   #image: phpfpm:sql
+   build: ./php 
    links:
      - l4d2-database
    volumes:
@@ -28,3 +27,14 @@ services:
      - MYSQL_USER=l4d2user
      - MYSQL_PASSWORD=password
      - MYSQL_ROOT_PASSWORD=rootpwd
+
+ l4d2-server:   
+   #build: ./l4d2
+   image: fculpo/l4d2
+   #volumes:
+   #  - ./l4d2/cfg:/home/steam/l4d2/left4dead2/cfg
+   ports:
+     - "27015:27015"
+     - "27015:27015/udp"
+   #links:
+   #  - l4d2-database
