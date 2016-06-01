@@ -1,2 +1,5 @@
 mariadb/
 config.php
+l4d2/mods/admins_simple.ini
+l4d2/mods/databases.cfg
+l4d2/cfg/custom.cfg

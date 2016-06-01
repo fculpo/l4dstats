@@ -3,20 +3,20 @@ version: '2'
 services:
  l4d2-php-fpm:
    build: ./php 
-   links:
-     - l4d2-database
    volumes:
      - ./WEBSTATS:/var/www/html
+   links:
+     - l4d2-database
 
  l4d2-nginx-front:
    image: nginx:alpine
-   links:
-     - l4d2-php-fpm
    ports:
      - "9012:80"
    volumes:
      - ./nginx/l4d2.conf:/etc/nginx/conf.d/default.conf:ro
      - ./WEBSTATS:/usr/share/nginx/html
+   links:
+     - l4d2-php-fpm
 
  l4d2-database:
    image: mariadb:5
@@ -29,12 +29,16 @@ services:
      - MYSQL_ROOT_PASSWORD=rootpwd
 
  l4d2-server:   
-   #build: ./l4d2
+   build: ./l4d2
    image: fculpo/l4d2
-   #volumes:
-   #  - ./l4d2/cfg:/home/steam/l4d2/left4dead2/cfg
+   volumes:
+     - ./l4d2/cfg/custom.cfg:/opt/steam/l4d2/left4dead2/cfg/server.cfg
+     - ./l4d2/mods/l4d_stats.txt:/opt/steam/l4d2/left4dead2/addons/sourcemod/gamedata/l4d_stats.txt
+     - ./l4d2/mods/admins_simple.ini:/opt/steam/l4d2/left4dead2/addons/sourcemod/configs/admins_simple.ini
+     - ./l4d2/mods/databases.cfg:/opt/steam/l4d2/left4dead2/addons/sourcemod/configs/databases.cfg
+     - ./l4d2/mods/l4d_stats.smx:/opt/steam/l4d2/left4dead2/addons/sourcemod/plugins/l4d_stats.smx
    ports:
      - "27015:27015"
      - "27015:27015/udp"
-   #links:
-   #  - l4d2-database
+   links:
+     - l4d2-database
