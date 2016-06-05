@@ -11,7 +11,7 @@ if [ "$1" = 'l4d2' ]; then
   chown -R steam:steam /opt/steam/l4d2/left4dead2/addons
   
   # Launch server as steam user
-  exec gosu steam /opt/steam/l4d2/srcds_run -game left4dead2 -usercon -ip 0.0.0.0
+  exec gosu steam /opt/steam/l4d2/srcds_run -game left4dead2 +map c4m1_milltown_a
 fi
 
 # Launch command if provided (as root)
